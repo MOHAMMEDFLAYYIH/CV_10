@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mohammed Ihsan — Flutter Developer portfolio. Clean Architecture, BLoC, production apps.">
+  <meta property="og:title" content="Mohammed Ihsan — Flutter Developer">
+  <meta property="og:description" content="Flutter & Dart developer specializing in Clean Architecture and production mobile apps.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2563EB">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <title>Mohammed Ihsan — Flutter Developer</title>
+</head>
+  <body>
+    <!-- ===== PRELOADER ===== -->
+    <div id="preloader" role="status" aria-label="Loading">
+      <div class="preloader-content">
+        <div class="preloader-monogram">MI</div>
+        <div class="preloader-bar-track">
+          <div class="preloader-bar-fill"></div>
+        </div>
+        <div class="preloader-text">Loading...</div>
+      </div>
+    </div>
+
+  <!-- ===== CURSOR FOLLOWER ===== -->
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div id="scrollProgress" class="scroll-progress" role="progressbar" aria-label="Scroll progress"></div>
+
+  <!-- ===== BG EFFECTS ===== -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="bg-orb" data-speed="0.3"></div>
+    <div class="bg-orb" data-speed="0.5"></div>
+    <div class="bg-orb" data-speed="0.2"></div>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ===== SIDEBAR (desktop) / BOTTOM NAV (mobile) ===== -->
+  <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar labels">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="sidebar-nav">
+      <a href="#hero" class="nav-item active">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h1m16 0h1M5 12a7 7 0 0 1 14 0M5 12a7 7 0 0 0 14 0"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="#about" class="nav-item">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="nav-label">About</span>
+      </a>
+      <a href="#skills" class="nav-item">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span class="nav-label">Skills</span>
+      </a>
+      <a href="#projects" class="nav-item">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span class="nav-label">Projects</span>
+      </a>
+      <a href="#process" class="nav-item">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span class="nav-label">Process</span>
+      </a>
+      <a href="#contact" class="nav-item">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="nav-label">Contact</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== TOP CONTROLS BAR ===== -->
+  <div class="top-controls">
+    <button class="control-btn" id="darkToggle" aria-label="Toggle dark mode">
+      <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="hero-greeting">Hi, I'm</p>
+          <h1 class="hero-name">Mohammed Ihsan</h1>
+          <p class="hero-tagline">Flutter Developer · Clean Architecture · Problem Solver</p>
+          <p class="hero-stat">
+            <span class="stat-number">3</span> shipped apps · <span class="stat-number">2+</span> years building
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-outline magnetic-btn">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-mockup">
+          <div class="phone-mockup" id="phoneMockup" role="presentation" aria-label="App preview mockup">
+            <div class="phone-bezel">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" id="phoneScreen">
+                <!-- News & Languages -->
+                <div class="app-screen" data-app="newslanguages">
+                  <div class="app-screen-header" style="background: linear-gradient(135deg, #5cb820, #4a9e1a);">
+                    <span class="app-screen-status">9:41</span>
+                    <div class="app-screen-icons">
+                      <span class="signal-bar"></span>
+                      <span class="wifi-bar"></span>
+                      <span class="battery-bar"></span>
+                    </div>
+                  </div>
+                  <div class="app-screen-body" style="background:#000;padding:0;overflow:hidden;flex:1;display:flex;">
+                    <img src="assets/news-languages.png" alt="News & Languages app screen" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  </div>
+                </div>
+                <!-- Malej -->
+                <div class="app-screen active" data-app="malej">
+                  <div class="app-screen-header" style="background: linear-gradient(135deg, #2a7d85, #1f666d);">
+                    <span class="app-screen-status">9:41</span>
+                    <div class="app-screen-icons">
+                      <span class="signal-bar"></span>
+                      <span class="wifi-bar"></span>
+                      <span class="battery-bar"></span>
+                    </div>
+                  </div>
+                  <div class="app-screen-body" style="background:#000;padding:0;overflow:hidden;flex:1;display:flex;">
+                    <img src="assets/malej.png" alt="Malej app screen" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  </div>
+                </div>
+                <!-- SplitEase -->
+                <div class="app-screen" data-app="splitease">
+                  <div class="app-screen-header" style="background: linear-gradient(135deg, #2a6bd0, #1f56b0);">
+                    <span class="app-screen-status">9:41</span>
+                    <div class="app-screen-icons">
+                      <span class="signal-bar"></span>
+                      <span class="wifi-bar"></span>
+                      <span class="battery-bar"></span>
+                    </div>
+                  </div>
+                  <div class="app-screen-body" style="background:#000;padding:0;overflow:hidden;flex:1;display:flex;">
+                    <img src="assets/splitease.png" alt="SplitEase app screen" style="width:100%;height:100%;object-fit:cover;display:block;">
+                  </div>
+                </div>
+              </div>
+              <div class="phone-indicator"></div>
+            </div>
+            <div class="phone-dots">
+              <span class="phone-dot" data-index="0"></span>
+              <span class="phone-dot active" data-index="1"></span>
+              <span class="phone-dot" data-index="2"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section about-section">
+      <div class="section-header" data-number="01">
+        <h2 class="section-title">About</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-left">
+          <div class="about-photo-frame">
+            <img src="assets/profile.png" alt="Mohammed Ihsan" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+            <div class="about-facts">
+              <div class="about-fact"><span class="fact-dot" style="background:#10B981;"></span><span class="fact-text">Computer Engineering</span></div>
+              <div class="about-fact"><span class="fact-dot" style="background:#10B981;"></span><span class="fact-text">Flutter & Clean Architecture</span></div>
+            </div>
+        </div>
+        <div class="about-right">
+          <div class="about-bio">
+            <p>
+              Computer Engineering student turned Flutter developer. I build production mobile apps
+              with Clean Architecture, BLoC, and offline-first design — the same discipline that
+              scales from a solo project to a team of ten.
+            </p>
+          </div>
+          <div class="about-highlights">
+            <div class="highlight-card">
+              <div class="highlight-num">01</div>
+              <div class="highlight-info">
+                <span class="highlight-title">Education</span>
+                <span class="highlight-text">Computer Engineering</span>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-num">02</div>
+              <div class="highlight-info">
+                <span class="highlight-title">Focus</span>
+                <span class="highlight-text">Clean Architecture + BLoC</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-footer">
+            <div class="about-flags">
+              <span class="flag-badge">🇮🇶 Iraq</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section skills-section">
+      <div class="section-header" data-number="02">
+        <h2 class="section-title">Skills</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3 class="skill-group-title">Core</h3>
+          <div class="skill-badges">
+            <span class="skill-badge" data-level="95"><span class="skill-badge-content"><span class="skill-icon">D</span> Dart</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="95"><span class="skill-badge-content"><span class="skill-icon">F</span> Flutter</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Architecture</h3>
+          <div class="skill-badges">
+            <span class="skill-badge" data-level="88"><span class="skill-badge-content"><span class="skill-icon">CA</span> Clean Architecture</span><span class="skill-level"><span class="skill-level-bar" </span></span></span>
+            <span class="skill-badge" data-level="85"><span class="skill-badge-content"><span class="skill-icon">B</span> BLoC / Cubit</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="80"><span class="skill-badge-content"><span class="skill-icon">I</span> get_it</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="75"><span class="skill-badge-content"><span class="skill-icon">GR</span> go_router</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Backend & Data</h3>
+          <div class="skill-badges">
+            <span class="skill-badge" data-level="85"><span class="skill-badge-content"><span class="skill-icon">FB</span> Firebase</span><span class="skill-level"><span class="skill-level-bar" </span></span></span>
+            <span class="skill-badge" data-level="70"><span class="skill-badge-content"><span class="skill-icon">FA</span> FastAPI</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="65"><span class="skill-badge-content"><span class="skill-icon">PG</span> PostgreSQL</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="80"><span class="skill-badge-content"><span class="skill-icon">H</span> Hive</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group-title">Tools & Workflow</h3>
+          <div class="skill-badges">
+            <span class="skill-badge" data-level="82"><span class="skill-badge-content"><span class="skill-icon">F</span> Figma</span><span class="skill-level"><span class="skill-level-bar" </span></span></span>
+            <span class="skill-badge" data-level="88"><span class="skill-badge-content"><span class="skill-icon">G</span> Git</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+            <span class="skill-badge" data-level="70"><span class="skill-badge-content"><span class="skill-icon">CI</span> CI/CD</span><span class="skill-level"><span class="skill-level-bar"></span></span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS BANNER ===== -->
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section projects-section">
+      <div class="section-header" data-number="03">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="projects-grid">
+        <!-- News & Languages -->
+        <article class="project-card" data-project="newslanguages">
+          <span class="project-role">Solo Project</span>
+          <div class="project-card-preview" style="background: linear-gradient(135deg, #5cb820, #4a9e1a);">
+            <div class="card-preview-header"><span>9:41</span><div class="card-preview-icons"><span></span><span></span><span></span></div></div>
+            <div class="card-preview-body">
+              <span class="card-preview-icon">N&L</span>
+              <div class="card-preview-lines">
+                <span style="width:75%"></span>
+                <span style="width:55%"></span>
+                <span style="width:65%"></span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">News & Languages</h3>
+            <div class="project-tags">
+              <span style="background:rgba(116,212,44,0.12);color:#74d42c;">Flutter</span>
+              <span style="background:rgba(116,212,44,0.12);color:#74d42c;">BLoC</span>
+              <span style="background:rgba(116,212,44,0.12);color:#74d42c;">Firebase</span>
+              <span style="background:rgba(116,212,44,0.12);color:#74d42c;">ML Kit</span>
+            </div>
+            <p class="project-problem">
+              Learning a language through textbooks is dry. News is real, alive, and contextual — but too hard for learners without help.
+            </p>
+            <div class="project-metrics">
+              <span class="project-metric">4 Screens</span>
+              <span class="project-metric">Clean Arch</span>
+              <span class="project-metric">3 Months</span>
+            </div>
+            <div class="project-card-footer">
+              <span class="project-status status-dev">In Development</span>
+              <a href="#" class="project-link">View Code →</a>
+            </div>
+          </div>
+        </article>
+        <!-- Malej -->
+        <article class="project-card" data-project="malej">
+          <span class="project-role">Client Project</span>
+          <div class="project-card-preview" style="background: linear-gradient(135deg, #2a7d85, #1f666d);">
+            <div class="card-preview-header"><span>9:41</span><div class="card-preview-icons"><span></span><span></span><span></span></div></div>
+            <div class="card-preview-body">
+              <span class="card-preview-icon">MJ</span>
+              <div class="card-preview-lines">
+                <span style="width:70%"></span>
+                <span style="width:50%"></span>
+                <span style="width:60%"></span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">ملج / Malej</h3>
+            <div class="project-tags">
+              <span style="background:rgba(54,153,164,0.12);color:#3699a4;">Flutter</span>
+              <span style="background:rgba(54,153,164,0.12);color:#3699a4;">BLoC</span>
+              <span style="background:rgba(54,153,164,0.12);color:#3699a4;">Firebase</span>
+            </div>
+            <p class="project-problem">
+              University campuses are fragmented across WhatsApp groups. Students, staff, and alumni need one structured space.
+            </p>
+            <div class="project-metrics">
+              <span class="project-metric">👥 3 User Roles</span>
+              <span class="project-metric">🔔 Real-time Chat</span>
+              <span class="project-metric">🌐 RTL First</span>
+            </div>
+            <div class="project-card-footer">
+              <span class="project-status status-client">Client Project</span>
+              <a href="#" class="project-link">View Code →</a>
+            </div>
+          </div>
+        </article>
+        <!-- SplitEase -->
+        <article class="project-card" data-project="splitease">
+          <span class="project-role">Side Project</span>
+          <div class="project-card-preview" style="background: linear-gradient(135deg, #2a6bd0, #1f56b0);">
+            <div class="card-preview-header"><span>9:41</span><div class="card-preview-icons"><span></span><span></span><span></span></div></div>
+            <div class="card-preview-body">
+              <span class="card-preview-icon">SE</span>
+              <div class="card-preview-lines">
+                <span style="width:80%"></span>
+                <span style="width:55%"></span>
+                <span style="width:65%"></span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3 class="project-title">SplitEase</h3>
+            <div class="project-tags">
+              <span style="background:rgba(58,129,240,0.12);color:#3a81f0;">Flutter</span>
+              <span style="background:rgba(58,129,240,0.12);color:#3a81f0;">BLoC</span>
+              <span style="background:rgba(58,129,240,0.12);color:#3a81f0;">FastAPI</span>
+              <span style="background:rgba(58,129,240,0.12);color:#3a81f0;">PostgreSQL</span>
+            </div>
+            <p class="project-problem">
+              Expense splitting shouldn't need a calculator and a therapist. Real-time, multi-currency, fair.
+            </p>
+            <div class="project-metrics">
+              <span class="project-metric">💱 Multi-currency</span>
+              <span class="project-metric">📅 API Backend</span>
+              <span class="project-metric">🧾 Split Logic</span>
+            </div>
+            <div class="project-card-footer">
+              <span class="project-status status-dev">In Development</span>
+              <a href="#" class="project-link">View Code →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section id="process" class="section process-section">
+      <div class="section-header" data-number="04">
+        <h2 class="section-title">How I Build</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="process-timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-num">01</span></div>
+          <div class="timeline-card">
+            <div class="timeline-card-icon"><span class="tci-bar"></span></div>
+            <div class="timeline-card-content">
+              <h3 class="timeline-card-title">Design</h3>
+              <p class="timeline-card-desc">Figma-first. Prototype, test flows, lock interactions before a single widget is written.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-num">02</span></div>
+          <div class="timeline-card">
+            <div class="timeline-card-icon"><span class="tci-bar"></span></div>
+            <div class="timeline-card-content">
+              <h3 class="timeline-card-title">Architect</h3>
+              <p class="timeline-card-desc">Define the data flow, layer boundaries, and state strategy before writing feature code.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-num">03</span></div>
+          <div class="timeline-card">
+            <div class="timeline-card-icon"><span class="tci-bar"></span></div>
+            <div class="timeline-card-content">
+              <h3 class="timeline-card-title">Build</h3>
+              <p class="timeline-card-desc">Feature-first development with BLoC, repository pattern, and offline-first from day one.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"><span class="timeline-num">04</span></div>
+          <div class="timeline-card">
+            <div class="timeline-card-icon"><span class="tci-bar"></span></div>
+            <div class="timeline-card-content">
+              <h3 class="timeline-card-title">Ship</h3>
+              <p class="timeline-card-desc">Test, CI/CD, deploy. Repeat. Every app is a product, not a prototype.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section contact-section">
+      <div class="section-header" data-number="05">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-split">
+        <div class="contact-form-wrap">
+          <p class="contact-intro">
+            Working on something interesting? Let's talk.
+          </p>
+          <form class="contact-form" onsubmit="return false">
+            <div class="form-row">
+              <input type="text" class="form-input" placeholder="Name" aria-label="Your name">
+              <input type="email" class="form-input" placeholder="Email" aria-label="Your email">
+            </div>
+            <textarea class="form-input form-textarea" rows="3" placeholder="Message" aria-label="Your message"></textarea>
+            <button type="submit" class="btn btn-primary form-submit">
+              Send Message
+            </button>
+          </form>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-card-header">
+            <div class="contact-card-avatar">MI</div>
+            <div>
+              <span class="contact-card-name">Mohammed Ihsan</span>
+              <span class="contact-card-title">Flutter Developer</span>
+            </div>
+          </div>
+          <div class="contact-card-links">
+            <a href="mailto:mohammedihsanflayyih@gmail.com" class="contact-card-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>mohammedihsanflayyih@gmail.com</span>
+            </a>
+            <a href="https://github.com/MOHAMMEDFLAYYIH" class="contact-card-link" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/mohammed-flayyih-947045259/" class="contact-card-link" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <div class="contact-card-footer">
+            <span>⏱ Typically responds within 24h</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">MI</span>
+          <p class="footer-tagline">Flutter Developer · Clean Architecture · Problem Solver</p>
+        </div>
+        <div class="footer-links">
+          <span class="footer-heading">Navigation</span>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+          <span class="footer-heading">Connect</span>
+          <a href="mailto:mohammedihsanflayyih@gmail.com" class="footer-social-link" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://github.com/MOHAMMEDFLAYYIH" class="footer-social-link" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mohammed-flayyih-947045259/" class="footer-social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Mohammed Ihsan · <span id="footerYear"></span></span>
+        <span>Built with HTML, CSS, JavaScript</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
